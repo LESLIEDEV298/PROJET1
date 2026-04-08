@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style..css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+    <title>E-Commerce</title>
+</head>
+<body>
+    
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-text">SUSPENDU</div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="closeMobile()">Accueil</a>
+  <a href="#" onclick="closeMobile()">Collections</a>
+  <a href="#" onclick="closeMobile()">Nouveautés</a>
+  <a href="#" onclick="closeMobile()">Soldes</a>
+  <a href="#" onclick="closeMobile()">À propos</a>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">SUSPENDU</a>
+  <ul class="nav-links">
+    <li><a href="#">Accueil</a></li>
+    <li><a href="collection.html">Collections</a></li>
+    <li><a href="femme.html">Femme</a></li>
+    <li><a href="homme.html">Homme</a></li>
+    <li><a href="new.html">Nouveautés</a></li>
+    <li><a href="solde.html">Soldes</a></li>
+  </ul>
+  <div class="nav-actions">
+    <div class="nav-icon" title="Recherche">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    </div>
+    <div class="nav-icon" title="Compte">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </div>
+    <div class="nav-icon" title="Panier" onclick="openCart()" style="cursor:pointer">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <div class="cart-badge" id="cartBadge">2</div>
+    </div>
+    <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SLIDER -->
+<section class="hero" id="heroSlider">
+  <div class="slide active" data-index="0">
+    <div class="slide-bg" style="background-image:url('img/ecommerce.jpg')"></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="slide-tag">Nouvelle Collection</div>
+      <h1 class="slide-title">L'art du<br><em style="font-style:italic;color:var(--accent)">style intemporel</em></h1>
+      <p class="slide-sub">Découvrez des pièces conçues pour traverser les saisons avec une élégance rare et une qualité sans compromis.</p>
+      <div class="slide-btns">
+        <a href="#" class="btn-primary">Explorer la collection</a>
+        <a href="#" class="btn-outline">Voir le carnet de tendance</a>
+      </div>
+    </div>
+  </div>
+  <div class="slide" data-index="1">
+    <div class="slide-bg" style="background-image:url('img/photo-1441986300917-64674bd600d8.jpeg')"></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="slide-tag">Été 2026</div>
+      <h1 class="slide-title">Légèreté<br><em style="font-style:italic;color:var(--accent)">& Raffinement</em></h1>
+      <p class="slide-sub">Des matières nobles sélectionnées aux quatre coins du monde pour une garde-robe d'exception.</p>
+      <div class="slide-btns">
+        <a href="#" class="btn-primary">Acheter maintenant</a>
+        <a href="#" class="btn-outline">En savoir plus</a>
+      </div>
+    </div>
+  </div>
+  <div class="slide" data-index="2">
+    <div class="slide-bg" style="background-image:url('img/depositphotos.jpg')"></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="slide-tag">Édition Limitée</div>
+      <h1 class="slide-title">Exclusivité<br><em style="font-style:italic;color:var(--accent)">absolue</em></h1>
+      <p class="slide-sub">30 pièces uniques numérotées. Chaque création raconte une histoire de savoir-faire artisanal.</p>
+      <div class="slide-btns">
+        <a href="#" class="btn-primary">Réserver la mienne</a>
+        <a href="#" class="btn-outline">Découvrir</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="slider-dots" id="sliderDots">
+    <div class="dot active" onclick="goToSlide(0)"></div>
+    <div class="dot" onclick="goToSlide(1)"></div>
+    <div class="dot" onclick="goToSlide(2)"></div>
+  </div>
+  <div class="slider-arrows">
+    <div class="arrow" onclick="changeSlide(-1)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+    </div>
+    <div class="arrow" onclick="changeSlide(1)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Défiler</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track" id="marquee">
+    <span>Livraison gratuite dès 100000Fcfa</span>
+    <span>Retours gratuits sous 30 jours</span>
+    <span>Paiement 3x sans frais</span>
+    <span>Matières certifiées durables</span>
+    <span>Nouveautés chaque semaine</span>
+    <span>Service client 7j/7</span>
+    <span>Livraison gratuite dès 100000Fcfa</span>
+    <span>Retours gratuits sous 30 jours</span>
+    <span>Paiement 3x sans frais</span>
+    <span>Matières certifiées durables</span>
+    <span>Nouveautés chaque semaine</span>
+    <span>Service client 7j/7</span>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="categories">
+  <div class="reveal"><div class="section-label">Explorer par univers</div></div>
+  <div class="reveal reveal-delay-1">
+    <h2 class="section-title">Nos <em>Catégories</em></h2>
+  </div>
+  <div class="cat-grid reveal reveal-delay-2">
+    <div class="cat-card">
+      <div class="cat-img" style="min-height:480px;background-image:url('img/pexels-rachel-claire-5864245.jpg')"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-info">
+        <div class="cat-name">Prêt-à-Porter</div>
+        <div class="cat-count">248 articles</div>
+      </div>
+      <div class="cat-arrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 17 10-10M7 7h10v10"/></svg>
+      </div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-img" style="min-height:220px;background-image:url('img/pexels-79380313-9874708.jpg')"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-info">
+        <div class="cat-name">Accessoires</div>
+        <div class="cat-count">156 articles</div>
+      </div>
+      <div class="cat-arrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 17 10-10M7 7h10v10"/></svg>
+      </div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-img" style="min-height:220px;background-image:url('img/WhatsApp.jpeg')"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-info">
+        <div class="cat-name">Chaussures</div>
+        <div class="cat-count">94 articles</div>
+      </div>
+      <div class="cat-arrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 17 10-10M7 7h10v10"/></svg>
+      </div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-img" style="min-height:220px;background-image:url('img/pexels-pedrofurtadoo-29096397.jpg')"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-info">
+        <div class="cat-name">Maroquinerie</div>
+        <div class="cat-count">72 articles</div>
+      </div>
+      <div class="cat-arrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 17 10-10M7 7h10v10"/></svg>
+      </div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-img" style="min-height:220px;background-image:url('img/pexels-pixabay-47856.jpg')"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-info">
+        <div class="cat-name">Montres & Bijoux</div>
+        <div class="cat-count">48 articles</div>
+      </div>
+      <div class="cat-arrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 17 10-10M7 7h10v10"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products">
+  <div class="products-header reveal">
+    <div>
+      <div class="section-label">Sélection curatée</div>
+      <h2 class="section-title">Nos <em>Coups de Cœur</em></h2>
+    </div>
+    <div>
+      <div class="filter-tabs" id="filterTabs">
+        <button class="filter-tab active" onclick="filterTab(this,'all')">Tous</button>
+        <button class="filter-tab" onclick="filterTab(this,'new')">Nouveautés</button>
+        <button class="filter-tab" onclick="filterTab(this,'sale')">Soldes</button>
+        <button class="filter-tab" onclick="filterTab(this,'top')">meilleures-ventes</button>
+      </div>
+      <div class="products-nav" style="margin-top:1rem">
+        <div class="prod-arrow" onclick="slideProd(-1)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        </div>
+        <div class="prod-arrow" onclick="slideProd(1)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="prod-slider-wrap reveal">
+    <div class="prod-slider" id="prodSlider">
+      <!-- Cards injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- PROMO BANNER -->
+<div class="promo-banner">
+  <div>
+    <div class="promo-label reveal">À propos de ArysShop</div>
+    <h2 class="promo-title reveal reveal-delay-1">Façonné avec<br><em style="font-style:italic;color:var(--accent)">passion</em> depuis<br>2025</h2>
+    <p class="promo-sub reveal reveal-delay-2">Chaque pièce est pensée, conçue et assemblée par des artisans passionnés. Nous croyons en une mode qui dure, qui respecte et qui inspire.</p>
+    <div class="promo-stats reveal reveal-delay-3">
+      <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">Années d'expertise</div></div>
+      <div class="stat-item"><div class="stat-num">85k</div><div class="stat-label">Clients satisfaits</div></div>
+      <div class="stat-item"><div class="stat-num">10</div><div class="stat-label">Pays livrés</div></div>
+    </div>
+  </div>
+  <div class="promo-img-side reveal reveal-delay-2">
+    <div class="promo-img-wrap"><div></div></div>
+    <div class="promo-float-card">
+      <div class="float-card-num">100%</div>
+      <div class="float-card-text">Matières naturelles</div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="reveal"><div class="section-label">Ce qu'ils disent</div></div>
+  <div class="reveal reveal-delay-1">
+    <h2 class="section-title">Avis de nos <em>clients</em></h2>
+  </div>
+  <div class="testi-slider-wrap reveal reveal-delay-2">
+    <div class="testi-slider" id="testiSlider">
+      <!-- Injected by JS -->
+    </div>
+  </div>
+  <div class="testi-nav" id="testiNav"></div>
+</section>
+
+<!-- BRANDS -->
+<div class="brands">
+  <div class="brands-title">Nos marques partenaires</div>
+  <div class="brands-grid">
+    <div class="brand-logo">MAISON CO.</div>
+    <div class="brand-logo">ÉLITE PARIS</div>
+    <div class="brand-logo">ATELIER N°5</div>
+    <div class="brand-logo">VOGUE LINE</div>
+    <div class="brand-logo">NORDICA</div>
+    <div class="brand-logo">SABLE & OR</div>
+  </div>
+</div>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="newsletter-inner reveal">
+    <div class="newsletter-icon">✉</div>
+    <h2 class="newsletter-title">Restez dans la tendance</h2>
+    <p class="newsletter-sub">Abonnez-vous à notre newsletter et soyez les premiers informés des nouvelles collections, ventes privées et offres exclusives.</p>
+    <div class="newsletter-form">
+      <input type="email" class="newsletter-input" placeholder="fotsingaristote@gmail.com"/>
+      <button class="newsletter-btn" onclick="subscribeNewsletter()">S'abonner</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">suspendu</div>
+      <p class="footer-desc">Une boutique en ligne dédiée à l'élégance, au raffinement et à l'exception depuis 2025. Chaque pièce est une promesse de qualité.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" title="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a class="social-btn" href="#" title="Facebook">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a class="social-btn" href="#" title="Pinterest">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.04-2.83.18-.78 1.22-5.17 1.22-5.17s-.31-.62-.31-1.55c0-1.46.85-2.55 1.9-2.55.9 0 1.33.67 1.33 1.48 0 .9-.58 2.26-.88 3.52-.25 1.05.52 1.9 1.54 1.9 1.85 0 3.1-2.38 3.1-5.2 0-2.14-1.44-3.64-3.5-3.64-2.38 0-3.78 1.79-3.78 3.64 0 .72.28 1.49.62 1.91.07.08.08.15.06.24-.06.26-.2.84-.23.96-.04.16-.13.19-.3.11-1.12-.52-1.82-2.17-1.82-3.49 0-2.84 2.06-5.45 5.94-5.45 3.12 0 5.55 2.22 5.55 5.19 0 3.1-1.95 5.59-4.66 5.59-.91 0-1.77-.47-2.06-1.03l-.56 2.1c-.2.78-.75 1.75-1.12 2.34.85.26 1.74.4 2.67.4 5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>
+        </a>
+        <a class="social-btn" href="#" title="YouTube">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22.54 6.42a2.78 2.78 0 0 0-1.94-1.96C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.4 19.54C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigation</div>
+      <ul class="footer-links">
+        <li><a href="#">Collections femme</a></li>
+        <li><a href="#">Collections homme</a></li>
+        <li><a href="#">Accessoires</a></li>
+        <li><a href="#">Nouveautés</a></li>
+        <li><a href="#">Soldes</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Service client</div>
+      <ul class="footer-links">
+        <li><a href="#">Mon compte</a></li>
+        <li><a href="#">Suivi de commande</a></li>
+        <li><a href="#">Retours & échanges</a></li>
+        <li><a href="#">Guide des tailles</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Informations</div>
+      <ul class="footer-links">
+        <li><a href="#">Notre histoire</a></li>
+        <li><a href="#">Artisanat & qualité</a></li>
+       <li><a href="#">Engagement RSE</a></li>   <!--/*responsabilite societale des entreprises -->
+        <li><a href="#">Presse</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">Developpe par AristoteDilaneFotsing © 2025 ArysShop. Tous droits réservés. — Mentions légales · Confidentialité</div>
+    <div class="payment-icons">
+      <div class="pay-icon">Visa</div>
+      <div class="pay-icon">MoMo</div>
+      <div class="pay-icon">PayPal</div>
+      <div class="pay-icon">Orange Money</div>
+    </div>
+  </div>
+</footer>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCartOutside(event)">
+  <div class="cart-sidebar">
+    <div class="cart-header">
+      <div class="cart-title">Mon Panier <span style="font-size:.85rem;color:var(--accent);font-family:'DM Sans'">(2)</span></div>
+      <div class="cart-close" onclick="closeCart()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </div>
+    </div>
+    <div class="cart-items">
+      <div class="cart-item">
+        <div class="cart-item-img" style="background-image:url('img/photo-1594938298603-c8148c4dae35.jpg')"></div>
+        <div class="cart-item-info">
+          <div class="cart-item-name">Robe Midi Élégante</div>
+          <div class="cart-item-variant">Taille S · Ivoire</div>
+          <div class="cart-item-price">18900 fcfa</div>
+          <div class="cart-item-qty">
+            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+            <span class="qty-num">1</span>
+            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+            <span style="margin-left:auto;cursor:pointer;color:#aaa;font-size:.8rem" onclick="removeCartItem(this)">Supprimer</span>
+          </div>
+        </div>
+      </div>
+      <div class="cart-item">
+        <div class="cart-item-img" style="background-image:url('img/sac-1553062407-98eeb64c6a62.jpg')"></div>
+        <div class="cart-item-info">
+          <div class="cart-item-name">Sac en Cuir Nappa</div>
+          <div class="cart-item-variant">Cognac</div>
+          <div class="cart-item-price">15000 Fcfa</div>
+          <div class="cart-item-qty">
+            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+            <span class="qty-num">1</span>
+            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+            <span style="margin-left:auto;cursor:pointer;color:#aaa;font-size:.8rem" onclick="removeCartItem(this)">Supprimer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span class="cart-total-label">Total</span>
+        <span class="cart-total-price">33900 Fcfa</span>
+      </div>
+      <button class="cart-checkout" onclick="showToast('Redirection vers le paiement sécurisé...')">Commander →</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- BACK TO TOP -->
+<div id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg>
+</div>
+<script src="js/script.js"></script>
+</body>
+</html>
